@@ -1,0 +1,10 @@
+package logicStep;
+
+import chromeDriver.StartChromeDriver;
+
+public class LogicStep extends StartChromeDriver {
+
+	public void acessoSite() {
+		
+	}
+}

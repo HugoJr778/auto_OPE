@@ -1,0 +1,18 @@
+package suiteTest;
+
+import org.junit.runner.RunWith;
+
+import cucumber.api.CucumberOptions;
+
+@RunWith(Cucumber)
+@CucumberOptions(
+		
+		features = "src/test/java/teste",
+		glue = {"src/test/java/StepGherkin"},
+		tags = {"@TEST"}
+		
+		)
+
+
+public class SuiteTestes {
+}

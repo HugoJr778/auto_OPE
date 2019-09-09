@@ -1,0 +1,9 @@
+package stepGherkin;
+
+public class StepGherkin {
+	
+	@Given("^acesso site e realizo o login$") {
+		
+	}
+	
+}

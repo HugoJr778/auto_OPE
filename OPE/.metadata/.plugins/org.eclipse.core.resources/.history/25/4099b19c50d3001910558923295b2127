@@ -1,0 +1,14 @@
+package stepGherkin;
+
+import logicStep.LogicStep;
+
+public class StepGherkin {
+	
+	private LogicStep logic = new LogicStep();
+	
+	@Given("^acesso site e realizo o login$") 
+	public void acessoSite(){
+		
+	}
+	
+}
