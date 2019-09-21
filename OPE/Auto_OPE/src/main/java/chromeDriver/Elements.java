@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 
 public class Elements {
 	
+	public String scriptScroll() {return "window.scrollBy";}
+	
 	public By inputUser() {return By.xpath("//input[@id='id_username']");}
 	public By inputPassword() {return By.xpath("//input[@id='id_password']");}
 	public By btnLogin() {return By.xpath("//button[@class='btn btn-primary btn-block']");}
@@ -23,4 +25,6 @@ public class Elements {
 	public By btnRegister() {return By.xpath("//button[@id='cadastra_cliente']");} 
 	
 	public By goReport() {return By.xpath("//a[@class='nav-link js-scroll-trigger active']");}
+	public By searchReport() {return By.xpath("//div[@id='tabela_relatorio_filter']//input");}
+	public By fieldReport() {return By.xpath("//section[@id='Relatorio']//tr[1]//td[1]");}
 }

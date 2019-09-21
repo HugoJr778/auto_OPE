@@ -5,10 +5,13 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ConnectionDriver extends Driver {
@@ -20,7 +23,6 @@ public class ConnectionDriver extends Driver {
 		options.setExperimentalOption("prefs", prefs);
 		options.addArguments("use-fake-ui-for-media-stream");
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-
 		setDriver(new ChromeDriver(options));
 		getDriver().manage().window().maximize();
 		getDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -28,8 +30,8 @@ public class ConnectionDriver extends Driver {
 		setWait(new WebDriverWait(getDriver(), 60));
 	}
 
-	public void setUpUrl(String string) {
-		getDriver().get(string);
+	public void setUpUrl(String url) {
+		getDriver().get(url);
 	}
 	public void close() {
 		getDriver().close();
@@ -37,18 +39,42 @@ public class ConnectionDriver extends Driver {
 	public void timeouts(By locator) {
 		getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
-	public void click(By by) {
-		timeouts(by);
-		getDriver().findElement(by).click();
+	public void click(By element) {
+		timeouts(element);
+		getDriver().findElement(element).click();
 	}
-	public void sendKeys(By by, String string) {
-		timeouts(by);
-		getDriver().findElement(by).sendKeys(string);
+	public void sendKeys(By element, String value) {
+		timeouts(element);
+		getDriver().findElement(element).sendKeys(value);
 	}
-	public void isPresentAndClick(By by) {
-		timeouts(by);
-		if (getDriver().findElement(by).isDisplayed()) {
-			getDriver().findElement(by).click();
+	public void isPresentAndClick(By element) {
+		timeouts(element);
+		if (getDriver().findElement(element).isDisplayed()) {
+			getDriver().findElement(element).click();
+		}
+	}
+	public void selectValue(By element, String option) {
+		new Select(getDriver().findElement(element)).selectByVisibleText(option);
+	}
+	public void clickCheckBox(By element) {
+		if(!getDriver().findElement(element).isSelected()) {
+			click(element);
+		}
+	}
+	public void scroll(int pxInitial, int pxFinal) {
+		JavascriptExecutor js = (JavascriptExecutor) getDriver();
+		System.out.println(">>> Rolling...");
+		js.executeScript(getElements().scriptScroll() + "(" + pxInitial + "," + pxFinal + ")");
+	}
+	public String getValue(By element) {
+		WebElement x = getDriver().findElement(element);
+		String attribute = x.getText();
+		if(attribute == null) {
+			return "";
+		} else if(attribute.isEmpty()) {
+			return "";
+		} else {
+			return attribute;
 		}
 	}
 }
