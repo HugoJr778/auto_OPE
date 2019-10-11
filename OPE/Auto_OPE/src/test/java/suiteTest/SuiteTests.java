@@ -8,9 +8,13 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		
+		dryRun = false,
 		features = "src//test//java//teste",
-		glue = {"stepGherkin"},
-		tags = {"@OPE_AUTO_001"}
+		glue = {"stepGherkin",
+				"logicsSteps.ope001",
+				"logicsSteps.ope002"},
+		
+		tags = {"@OPE_AUTO_001, @OPE_AUTO_002"}
 )
 
 public class SuiteTests {

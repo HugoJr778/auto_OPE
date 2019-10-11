@@ -9,7 +9,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,11 +21,11 @@ public class ConnectionDriver extends Driver {
 		prefs.put("profile.default_content_setting_values.notifications", 1);
 		options.setExperimentalOption("prefs", prefs);
 		options.addArguments("use-fake-ui-for-media-stream");
-		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "src\\main\\java\\chromeDriver\\chromedriver.exe");
 		setDriver(new ChromeDriver(options));
+		System.out.println(">>> INITIALIZED CHROME DRIVER <<<");
 		getDriver().manage().window().maximize();
 		getDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		setElements(PageFactory.initElements(getDriver(), Elements.class));
 		setWait(new WebDriverWait(getDriver(), 60));
 	}
 
@@ -37,7 +36,11 @@ public class ConnectionDriver extends Driver {
 		getDriver().close();
 	}
 	public void timeouts(By locator) {
-		getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
+		if(getWait() == null) {
+			setWait(new WebDriverWait(getDriver(), 60));
+			getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
+		} else 
+			getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 	public void click(By element) {
 		timeouts(element);
@@ -76,5 +79,9 @@ public class ConnectionDriver extends Driver {
 		} else {
 			return attribute;
 		}
+	}
+	public boolean isSelect(By element) {
+		boolean result = getDriver().findElement(element).isSelected();
+		return result;
 	}
 }

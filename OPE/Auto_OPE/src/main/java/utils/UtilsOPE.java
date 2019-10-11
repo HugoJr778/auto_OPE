@@ -16,7 +16,7 @@ public class UtilsOPE {
 	
 	public static void sleep(int time, String msg) {
 		try {
-			System.out.println((msg.isEmpty() ? "Wating..." : msg));
+			System.out.println((msg == null || msg.isEmpty() ? ">>> Wating..." : msg));
 			Thread.sleep(time);
 		} catch (InterruptedException e) {
 			System.err.println(e.getMessage() + "\n" + e);
@@ -43,6 +43,17 @@ public class UtilsOPE {
 		try {
 			Robot robot = new Robot();
 			robot.keyPress(KeyEvent.VK_F5);
+		} catch (AWTException e) {
+			System.err.println(e.getMessage() + "\n" + e);
+			failed();
+		}
+	}
+	
+	public static void robotEnter() {
+		try {
+			Robot robot = new Robot();
+			robot.keyPress(KeyEvent.VK_ENTER);
+			sleep(5000, ">>> Waiting After Pressing Enter...");
 		} catch (AWTException e) {
 			System.err.println(e.getMessage() + "\n" + e);
 			failed();

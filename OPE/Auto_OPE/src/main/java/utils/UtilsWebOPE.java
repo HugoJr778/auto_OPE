@@ -6,7 +6,7 @@ public class UtilsWebOPE extends ConnectionDriver {
 	
 	public static void finaliza() {
 		if(getDriver() != null) {
-			System.out.println(">>> Eroding...");
+			System.out.println(">>> ERODING... <<<");
 			getDriver().close();
 			getDriver().quit();
 		}

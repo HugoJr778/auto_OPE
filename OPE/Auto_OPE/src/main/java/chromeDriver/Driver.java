@@ -1,6 +1,7 @@
 package chromeDriver;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Driver {
@@ -22,7 +23,11 @@ public class Driver {
 		this.wait = wait;
 	}
 	public Elements getElements() {
-		return elements;
+		if(elements == null) {
+			setElements(PageFactory.initElements(getDriver(), Elements.class));
+			return elements;
+		} else 
+			return elements;
 	}
 	public void setElements(Elements pageDialerWeb) {
 		this.elements = pageDialerWeb;
