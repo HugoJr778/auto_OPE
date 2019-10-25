@@ -26,8 +26,8 @@ public class LogicOpe001 extends ConnectionDriver {
 		System.out.println(">>> Filling in Data...");
 		sendKeys(getElements().inputName(), x.get("nome"));
 		sendKeys(getElements().inputCEP(), x.get("cep"));
-		UtilsOPE.robotEnter();
-		UtilsOPE.sleep(10000, ">>> Waiting Content 'Endereço', 'Estado' and 'Cidade'...");
+		click(getElements().clickSearchCEP());
+		UtilsOPE.sleep(10000, ">>> Waiting Content 'Endereço+Bairro', 'Estado' and 'Cidade'...");
 		sendKeys(getElements().inputCPF(), x.get("cpf"));
 		sendKeys(getElements().inputTel(), x.get("telefone"));
 		clickCheckBox(getElements().checkBoxCar());
@@ -37,7 +37,6 @@ public class LogicOpe001 extends ConnectionDriver {
 		sendKeys(getElements().inputColor(), x.get("cor"));
 		click(getElements().btnRegister());
 		UtilsOPE.sleep(5000, ">>> Waiting Register...");
-		UtilsOPE.robotRefresh();
 	}
 	
 	public void vouParaRelatorio() {

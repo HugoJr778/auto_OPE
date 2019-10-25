@@ -25,7 +25,7 @@ public class GeneratorValues {
 			return data;
 		}
 	}
-
+	
 	private static void generator() {
 		Random sort = new Random();
 		final String[] TITULOS = {"nome","cep", "cpf", "telefone", "carro", "placa", "cor", "password"};
@@ -49,7 +49,7 @@ public class GeneratorValues {
 											  	  (carro.substring(3, carro.length()) + " 2019"), 
 											  	    (placa.substring(0,3) + "123"), 
 											  	      cor.substring(0, 7),
-											  	        password};
+											  	        password.substring(0, 10)};
 		for(int i = 0; i < VALUES_GENERATOR.length; i++) {
 			data.put(TITULOS[i], VALUES_GENERATOR[i]);
 		}

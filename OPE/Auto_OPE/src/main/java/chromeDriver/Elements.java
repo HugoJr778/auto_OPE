@@ -9,13 +9,14 @@ public class Elements {
 	//Elementos Genéricos
 	public By inputUser() {return By.xpath("//input[@id='id_username']");}
 	public By inputPassword() {return By.xpath("//input[@id='id_password']");}
-	public By btnLogin() {return By.xpath("//button[@class='btn btn-primary btn-block']");}
-	public By verifyHomePage() {return By.xpath("//h2[contains(text(),'Inicial')]");}
+	public By btnLogin() {return By.xpath("//button[@class='btn btn-dark']");}
+	public By verifyHomePage() {return By.xpath("//h2[contains(text(),'Mechanical System')]");}
 	
 	//Elementos OPE001 
-	public By goRegister() {return By.xpath("//a[@class='nav-link js-scroll-trigger active']");}
+	public By goRegister() {return By.xpath("//a[contains(text(),'Cadastro Cliente')]");}
 	public By inputName() {return By.xpath("//form[@class='form_cliente']//input[@placeholder='Nome Completo']");}
 	public By inputCEP() {return By.xpath("//form[@class='form_cliente']//input[@id='inputCEP']");}
+	public By clickSearchCEP() {return By.xpath("//div[@id='lupa']");}
 	public By inputCPF() {return By.xpath("//form[@class='form_cliente']//input[@id='inputCpf']");}
 	public By inputTel() {return By.xpath("//form[@class='form_cliente']//input[@id='telefone']");}
 	public By checkBoxCar() {return By.xpath("//body[@id='page-top']/div/div[@id='html']/section[@id='CadCli']/div[@class='w-100']/form[@class='form_cliente']/div[@id='app']/input[1]");}
@@ -33,5 +34,5 @@ public class Elements {
 	public By inputFuncPassword() {return By.xpath("//form[@id='cadastra_funcionarioform']//input[@id='password']");}
 	public By boxIsSelect() {return By.xpath("//input[@id='defaultCheck1']");}
 	public By btnRegisterFunc() {return By.xpath("//button[@id='cadastra_func']");}
-	public By btnLogout() {return By.xpath("//a[contains(text(),'Logout')]");}
+	public By btnLogout() {return By.xpath("//a[@class='nav-link js-scroll-trigger']//img");}
 }

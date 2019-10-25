@@ -2,9 +2,6 @@ package utils;
 
 import static org.junit.Assert.assertTrue;
 
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -38,28 +35,7 @@ public class UtilsOPE {
 		}
 		return null;
 	}
-	
-	public static void robotRefresh() {
-		try {
-			Robot robot = new Robot();
-			robot.keyPress(KeyEvent.VK_F5);
-		} catch (AWTException e) {
-			System.err.println(e.getMessage() + "\n" + e);
-			failed();
-		}
-	}
-	
-	public static void robotEnter() {
-		try {
-			Robot robot = new Robot();
-			robot.keyPress(KeyEvent.VK_ENTER);
-			sleep(5000, ">>> Waiting After Pressing Enter...");
-		} catch (AWTException e) {
-			System.err.println(e.getMessage() + "\n" + e);
-			failed();
-		}
-	}
-	
+
 	public static void failed() {
 		System.out.println(">>> FAILED...");
 		assertTrue(false);
