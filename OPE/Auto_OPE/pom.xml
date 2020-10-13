@@ -17,7 +17,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 
 		<!-- JUNIT -->
-		<junit.version>3.8.1</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<!-- SELENIUM -->
 		<selenium-java.version>3.141.59</selenium-java.version>
 		<!-- CUCUMBER.CUKES -->
